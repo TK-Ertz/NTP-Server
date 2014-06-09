@@ -1,0 +1,36 @@
+#!/bin/sh
+# Start/Stop ntpd
+SU5JVF9USElTX1NDUklQVF9BU19ST09U=TRUE
+
+BASE=/apps/NTP-Server
+NAME=ntpd
+CONF=${BASE}/conf/${NAME}.conf
+
+BIN=${BASE}/bin/${NAME}
+PID=${BASE}/var/run/${NAME}.pid
+
+if [ "${USER}" != "root" ]; then
+	exit 0
+fi
+        
+case "${1}" in
+	start)
+		echo -n "Starting ntpd: "
+		/sbin/start-stop-daemon -S -b -x ${BIN} -m ${PID} -p ${PID} -- -f ${CONF}
+		echo "Done."
+		;;
+	stop)
+		echo -n "Stopping ntpd: "
+		/sbin/start-stop-daemon -K -p ${PID} &> /dev/null
+		rm -f ${PID}
+		echo "Done."
+		;;
+	restart)
+		${0} stop
+		${0} start
+		;;
+	*)
+		echo "Usage ${0} [start|stop|restart]"
+		exit 1
+		;;
+esac
