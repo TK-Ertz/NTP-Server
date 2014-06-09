@@ -1,11 +1,17 @@
-NTP-Server
-==========
+# NTP-Server
 
 ntp server for beroFix
 
+## Build
 
-The MIT License (MIT)
-=====================
+```sh
+git clone https://github.com/TK-Ertz/NTP-Server.git
+cd NTP-Server
+baf init-conf
+baf make
+```
+
+# The MIT License (MIT)
 
 Copyright (c) 2014  TK- und IT-Service Ertz
 
