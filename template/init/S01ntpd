@@ -9,20 +9,22 @@ CONF=${BASE}/conf/${NAME}.conf
 BIN=${BASE}/bin/${NAME}
 PID=${BASE}/var/run/${NAME}.pid
 
-if [ "${USER}" != "root" ]; then
-	exit 0
+if [ "${USER}" = "admin" ]; then
+	echo "Only root can start/stop ntpd"
+	exit 1
 fi
-        
+
 case "${1}" in
 	start)
 		echo -n "Starting ntpd: "
-		/sbin/start-stop-daemon -S -b -x ${BIN} -m ${PID} -p ${PID} -- -f ${CONF}
+		/sbin/start-stop-daemon -S -b -x ${BIN} -m ${PID} -p ${PID} -- -d -f ${CONF}
 		echo "Done."
 		;;
 	stop)
 		echo -n "Stopping ntpd: "
 		/sbin/start-stop-daemon -K -p ${PID} &> /dev/null
 		rm -f ${PID}
+		killall ntpd
 		echo "Done."
 		;;
 	restart)
