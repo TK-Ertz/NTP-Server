@@ -37,7 +37,6 @@ PKG_SOURCE_URL	:= ftp://ftp.openbsd.org/pub/OpenBSD/OpenNTPD
 PKG_DIR		:= $(CUR_DIR)/src/$(PKG_NAME)-$(PKG_VERSION)
 
 OPENNTPD_CONFIGURE_OPTIONS += --with-privsep-user=root
-OPENNTPD_CONFIGURE_OPTIONS += --with-builtin-arc4random
 
 
 all: openntp openntp-install
@@ -79,7 +78,7 @@ $(PKG_DIR)/.configured: $(PKG_DIR)/.patched
 	export LDFLAGS=$(LDFLAGS); \
 	cd $(PKG_DIR); \
 	if [ -x configure ]; then \
-		./configure $(CONF_OPTS) $(OPENNTP_CONFIGURE_OPTIONS); \
+		./configure $(CONF_OPTS) $(OPENNTPD_CONFIGURE_OPTIONS); \
 	fi;
 	@touch $@
 	
