@@ -5,14 +5,14 @@
 function gui_menu() {
 
 	$ret  = '';
-	$ret .= "\t\t\t\t". '<div style="text-align: center; margin-left:32px; margin-right: 32px; height: 22px;">' ."\n";
-	$ret .= "\t\t\t\t\t". '<div style="float: right;">' ."\n";
-	$ret .= "\t\t\t\t\t\t". '<ul id="navmenu-h">' ."\n";
-	$ret .= "\t\t\t\t\t\t\t". '<li><a href="/userapp/">UserApp Management</a></li>' ."\n";
-	$ret .= "\t\t\t\t\t\t\t". '<li><a href="/app/berogui/">beroGUI</a></li>' ."\n";
-	$ret .= "\t\t\t\t\t\t". '</ul>' ."\n";
+	$ret .= "\t\t\t\t\t". '<div style="text-align: center; height: 22px;">' ."\n";
+	$ret .= "\t\t\t\t\t\t". '<div style="float: right;">' ."\n";
+	$ret .= "\t\t\t\t\t\t\t". '<ul id="navmenu-h">' ."\n";
+	$ret .= "\t\t\t\t\t\t\t\t". '<li><a href="/userapp/">UserApp Management</a></li>' ."\n";
+	$ret .= "\t\t\t\t\t\t\t\t". '<li><a href="/app/berogui/">beroGUI</a></li>' ."\n";
+	$ret .= "\t\t\t\t\t\t\t". '</ul>' ."\n";
+	$ret .= "\t\t\t\t\t\t". '</div>' ."\n";
 	$ret .= "\t\t\t\t\t". '</div>' ."\n";
-	$ret .= "\t\t\t\t". '</div>' ."\n";
 
 	return $ret;
 }
@@ -39,6 +39,7 @@ function gui_header($title) {
 	$ret .= "\t\t\t\t\t". '<span style="background-color: transparent; color: gray; font-size: 30px;">'. $title .'</span>' ."\n";
 	$ret .= "\t\t\t\t". '</div>' ."\n";
 	$ret .= "\t\t\t\t". '<br /><br />' ."\n";
+	$ret .= "\t\t\t\t". '<div class="content" style="margin-right: 32px">' ."\n";
 
 	return $ret;
 }
@@ -46,6 +47,16 @@ function gui_header($title) {
 function gui_footer() {
 
 	$ret  = '';
+	$ret .= "\t\t\t\t". '</div>' ."\n";
+	$ret .= "\t\t\t\t". '<div style="text-align: left;">' ."\n";
+	$ret .= "\t\t\t\t\t". '<hr style="height: 2px; color: gray;" />' ."\n";
+	$ret .= "\t\t\t\t\t". '<span style="background-color: transparent;">' ."\n";
+	$ret .= "\t\t\t\t\t\t". '&copy; <a href="http://www.tk-ertz.de">TK- und IT-Service Ertz</a>' ."\n";
+	$ret .= "\t\t\t\t\t". '</span>' ."\n";
+	$ret .= "\t\t\t\t\t". '<div style="float: right; margin-right: 32px;">' ."\n";
+	$ret .= "\t\t\t\t\t\t". '<a href="http://www.github.com/TK-Ertz/NTP-Server">GitHub</a>' ."\n";
+	$ret .= "\t\t\t\t\t". '</div>' ."\n";
+	$ret .= "\t\t\t\t". '</div>' ."\n";
 	$ret .= "\t\t\t". '</div>' ."\n";
 	$ret .= "\t\t\t". '<div class="bottom"><img src="/app/berogui/includes/images/bg_bottom.png" /></div>' ."\n";
 	$ret .= "\t\t". '</div>' ."\n";
@@ -126,7 +137,6 @@ if (!empty($_GET['execute']) && $_GET['execute'] == 'save'    ) ntpd_save();
 
 echo gui_header($app_name);
 echo gui_menu();
-echo "\t\t\t\t". '<div class="content" style="margin-right: 32px">' ."\n";
 echo "\t\t\t\t\t". '<h2>'. $app_name .' Settings</h2>' ."\n";
 echo "\t\t\t\t\t". '<form class="confForm" name="ntpd_settings" action="index.php" method="GET">' ."\n";
 echo "\t\t\t\t\t\t". '<div style="float: right;">' ."\n";
@@ -158,7 +168,6 @@ if (get_ntpd_enabled() == true) {
 	echo '<span style="color:red">disabled</span>';
 }
 echo '</div>' ."\n";
-echo "\t\t\t\t". '</div>' ."\n";
 echo gui_footer();
 
 ?>
