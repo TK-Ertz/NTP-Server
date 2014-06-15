@@ -20,11 +20,12 @@ fi
 
 case "${1}" in
 	start)
-		if [ "${NTPD_ENABLED}" = "yes" ]; then
-			echo -n "Starting ntpd: "
-			/sbin/start-stop-daemon -S -b -x ${BIN} -m ${PID} -p ${PID} -- -d -f ${CONF}
-			echo "Done."
+		if [ "${NTPD_ENABLED}" != "yes" ]; then
+			exit 0
 		fi
+		echo -n "Starting ntpd: "
+		/sbin/start-stop-daemon -S -b -x ${BIN} -m ${PID} -p ${PID} -- -d -f ${CONF}
+		echo "Done."
 		;;
 	stop)
 		echo -n "Stopping ntpd: "
