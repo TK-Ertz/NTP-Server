@@ -5,41 +5,67 @@
 function gui_menu() {
 
 	$ret  = '';
-	$ret .= "\t\t\t\t\t". '<div style="text-align: center; height: 22px;">' ."\n";
-	$ret .= "\t\t\t\t\t\t". '<div style="float: right;">' ."\n";
-	$ret .= "\t\t\t\t\t\t\t". '<ul id="navmenu-h">' ."\n";
-	$ret .= "\t\t\t\t\t\t\t\t". '<li><a href="/userapp/">UserApp Management</a></li>' ."\n";
-	$ret .= "\t\t\t\t\t\t\t\t". '<li><a href="/app/berogui/">beroGUI</a></li>' ."\n";
-	$ret .= "\t\t\t\t\t\t\t". '</ul>' ."\n";
-	$ret .= "\t\t\t\t\t\t". '</div>' ."\n";
+	$ret .= "\t\t\t\t". '<!-- MENU START -->' ."\n";
+	$ret .= "\t\t\t\t\t". '<div id="myslidemenu" class="jqueryslidemenu">' ."\n";
+	$ret .= "\t\t\t\t\t\t". '<ul id="navigation">' ."\n";
+	$ret .= "\t\t\t\t\t\t\t". '<li style="white-space: nowrap;">' ."\n";
+	$ret .= "\t\t\t\t\t\t\t\t". '<a href="#" id="management">Management +</a>' ."\n";
+	$ret .= "\t\t\t\t\t\t\t\t". '<ul>' ."\n";
+	$ret .= "\t\t\t\t\t\t\t\t\t". '<li style="white-space: nowrap;">' ."\n";
+	$ret .= "\t\t\t\t\t\t\t\t\t\t". '<a href="/userapp/" id="app_management">App Management</a>' ."\n";
+	$ret .= "\t\t\t\t\t\t\t\t\t". '</li>' ."\n";
+	$ret .= "\t\t\t\t\t\t\t\t\t". '<li style="white-space: nowrap;">' ."\n";
+	$ret .= "\t\t\t\t\t\t\t\t\t\t". '<a href="/app/berogui/index.php?m=market" id="app_market">App Market</a>' ."\n";
+	$ret .= "\t\t\t\t\t\t\t\t\t". '</li>' ."\n";
+	$ret .= "\t\t\t\t\t\t\t\t\t". '<li style="white-space: nowrap;">' ."\n";
+	$ret .= "\t\t\t\t\t\t\t\t\t\t". '<a href="/app/berogui/" id="berogui">beroGui</a>' ."\n";
+	$ret .= "\t\t\t\t\t\t\t\t\t". '</li>' ."\n";
+	$ret .= "\t\t\t\t\t\t\t\t\t". '<li style="white-space: nowrap;">' ."\n";
+	$ret .= "\t\t\t\t\t\t\t\t\t\t". '<a href="/app/berogui/includes/logout.php" id="berogui">Logout</a>' ."\n";
+	$ret .= "\t\t\t\t\t\t\t\t\t". '</li>' ."\n";
+	$ret .= "\t\t\t\t\t\t\t\t". '</ul>' ."\n";
+	$ret .= "\t\t\t\t\t\t\t". '</li>' ."\n";
+	$ret .= "\t\t\t\t\t\t". '</ul>' ."\n";
 	$ret .= "\t\t\t\t\t". '</div>' ."\n";
+	$ret .= "\t\t\t\t". '<!-- MENU END -->' ."\n";
 
 	return $ret;
 }
 
 function gui_header($title) {
 
-	$bg_inc = '/app/berogui/includes';
-
 	$ret  = '';
-	$ret .= '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">' ."\n";
-	$ret .= '<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">' ."\n";
+	$ret .= '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1 Transitional//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11-transitional.dtd">' ."\n";
+	$ret .= '<html>' ."\n";
 	$ret .= "\t". '<head>' ."\n";
-	$ret .= "\t\t". '<link type="text/css" href="/userapp/css/beroApp.css" rel="Stylesheet" />' ."\n";
-	$ret .= "\t\t". '<link type="image/x-icon" href="/app/berogui/includes/images/favicon.ico" rel="Icon" />' ."\n";
+	$ret .= "\t\t". '<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />' ."\n";
 	$ret .= "\t\t". '<title>' . $title . '</title>' ."\n";
+	$ret .= "\t\t". '<link type="image/x-icon" href="/userapp/shared/img/favicon.ico" rel="icon" />' ."\n";
+	$ret .= "\t\t". '<link type="text/css" href="/userapp/shared/css/screen.css" rel="Stylesheet" />' ."\n";
+	$ret .= "\t\t". '<link type="text/css" href="/userapp/shared/css/template_css.css" rel="Stylesheet" />' ."\n";
+	$ret .= "\t\t". '<link type="text/css" href="/userapp/shared/css/jquery-ui-1.8.21.custom.css" rel="Stylesheet" />' ."\n";
+	$ret .= "\t\t". '<link type="text/css" href="/userapp/shared/css/jqueryslidemenu.css" rel="Stylesheet" />' ."\n";
+	$ret .= "\t\t". '<script type="text/javascript" language="javascript" src="/userapp/shared/js/jquery-1.7.2.min.js"></script>' ."\n";
+	$ret .= "\t\t". '<script type="text/javascript" language="javascript" src="/userapp/shared/js/jquery-ui-1.8.21.custom.min.js"></script>' ."\n";
+	$ret .= "\t\t". '<script type="text/javascript" language="javascript" src="/userapp/shared/js/jqueryslidemenu.js"></script>' ."\n";
 	$ret .= "\t". '</head>' ."\n";
 	$ret .= "\t". '<body>' ."\n";
-	$ret .= "\t\t". '<div class="main">' ."\n";
-	$ret .= "\t\t\t". '<div class="top"><img src="'. $bg_inc .'/images/bg_top.png" /></div>' ."\n";
-	$ret .= "\t\t\t". '<div class="left">' ."\n";
-	$ret .= "\t\t\t\t". '<img src="'. $bg_inc .'/images/berofixlogo.png" />' ."\n";
-	$ret .= "\t\t\t\t". '<div style="width: 100%; text-align: center;">' ."\n";
-	$ret .= "\t\t\t\t\t". '<hr style="height: 2px; color: gray; margin-bottom: 20px;" />' ."\n";
-	$ret .= "\t\t\t\t\t". '<span style="background-color: transparent; color: gray; font-size: 30px;">'. $title .'</span>' ."\n";
+	$ret .= "\t\t". '<div class="container" id="page">' ."\n";
+	$ret .= "\t\t\t". '<div id="header">' ."\n";
+	$ret .= "\t\t\t\t". '<div id="logo" style="margin-bottom: 30px;">' ."\n";
+	$ret .= "\t\t\t\t\t". '<a href="http://www.beronet.com/" target="_blank">' ."\n";
+	$ret .= "\t\t\t\t\t\t". '<img src="/userapp/shared/img/beroNet.jpg" alt="beroNet" class="png" />' ."\n";
+	$ret .= "\t\t\t\t\t". '</a>' ."\n";
 	$ret .= "\t\t\t\t". '</div>' ."\n";
-	$ret .= "\t\t\t\t". '<br /><br />' ."\n";
-	$ret .= "\t\t\t\t". '<div class="content" style="margin-right: 32px">' ."\n";
+	$ret .= gui_menu();
+	$ret .= "\t\t\t". '</div>' ."\n";
+	$ret .= "\t\t\t". '<div id="pageName" class="clear">' ."\n";
+	$ret .= "\t\t\t\t". '<div class="part1">' ."\n";
+	$ret .= "\t\t\t\t\t". '<h1>'. $title .'</h1>' ."\n";
+	$ret .= "\t\t\t\t". '</div>' ."\n";
+	$ret .= "\t\t\t". '</div>' ."\n";
+	$ret .= "\n";
+	$ret .= '<!-- HEADER END -->' ."\n\n";
 
 	return $ret;
 }
@@ -47,23 +73,37 @@ function gui_header($title) {
 function gui_footer() {
 
 	$ret  = '';
+	$ret .= "\n";
+	$ret .= '<!--FOOTER START -->' ."\n";
+	$ret .= "\t\t\t". '<div id="footer" class="clear">' ."\n";
+	$ret .= "\t\t\t\t". '<div class="part1">' ."\n";
+	$ret .= "\t\t\t\t\t". 'Copyright &copy; 2014 <a href="http://www.tk-ertz.de" target="_blank">TK- und IT-Service Ertz</a>, Germany' ."\n";
 	$ret .= "\t\t\t\t". '</div>' ."\n";
-	$ret .= "\t\t\t\t". '<div style="text-align: left;">' ."\n";
-	$ret .= "\t\t\t\t\t". '<hr style="height: 2px; color: gray;" />' ."\n";
-	$ret .= "\t\t\t\t\t". '<span style="background-color: transparent;">' ."\n";
-	$ret .= "\t\t\t\t\t\t". '&copy; <a href="http://www.tk-ertz.de">TK- und IT-Service Ertz</a>' ."\n";
-	$ret .= "\t\t\t\t\t". '</span>' ."\n";
-	$ret .= "\t\t\t\t\t". '<div style="float: right; margin-right: 32px;">' ."\n";
-	$ret .= "\t\t\t\t\t\t". '<a href="http://www.github.com/TK-Ertz/NTP-Server">GitHub</a>' ."\n";
+	$ret .= "\t\t\t\t". '<div class="part2">' ."\n";
+	$ret .= "\t\t\t\t\t". '<div class="right">' ."\n";
+	$ret .= "\t\t\t\t\t\t". '<a href="http://www.github.com/TK-Ertz/NTP-Server" target="_blank">GitHub</a>' ."\n";
 	$ret .= "\t\t\t\t\t". '</div>' ."\n";
 	$ret .= "\t\t\t\t". '</div>' ."\n";
+
 	$ret .= "\t\t\t". '</div>' ."\n";
-	$ret .= "\t\t\t". '<div class="bottom"><img src="/app/berogui/includes/images/bg_bottom.png" /></div>' ."\n";
 	$ret .= "\t\t". '</div>' ."\n";
 	$ret .= "\t". '</body>' ."\n";
 	$ret .= '</html>' ."\n";
 
 	return $ret;
+}
+
+function get_ntpd_version () {
+	
+	if (file_exists('/apps/NTP-Server/VERSION')) {
+		foreach(file('/apps/NTP-Server/VERSION/') as $line) {
+			if (preg_match('/VERSION=([0-9]*)/', $line, $res)) {
+				return($res[1]);
+			}
+		}
+	}
+	
+	return('unknown');
 }
 
 function get_ntpd_enabled() {
@@ -111,22 +151,7 @@ $base_path = '/apps/' . $app_name;
 
 # BEGIN Session management #
 
-$redir_login = '/app/berogui/includes/login.php';
-
-@session_start();
-if (!isset($_SESSION['beroari_time'])) {
-	header('Location:' . $redir_login . '?userapp=' . $app_name);
-	exit();
-} elseif ((isset($_SESSION['beroari_time'])) && (($_SESSION['beroari_time'] + 1200) < time())) {
-	@session_unset();
-	@session_destroy();
-	header('Location:' . $redir_login . '?reason=sess_expd&userapp=' . $app_name);
-	exit();
-}
-
-unset($redir_login);
-
-$_SESSION['beroari_time'] = time();
+include_once '/home/admin/lib/php/session.php';
 
 #  END session management  #
 
@@ -136,28 +161,32 @@ if (!empty($_GET['execute']) && $_GET['execute'] == 'save'    ) ntpd_save();
 
 
 echo gui_header($app_name);
-echo gui_menu();
-echo "\t\t\t\t\t". '<h2>'. $app_name .' Settings</h2>' ."\n";
-echo "\t\t\t\t\t". '<form class="confForm" name="ntpd_settings" action="index.php" method="GET">' ."\n";
-echo "\t\t\t\t\t\t". '<div style="float: right;">' ."\n";
-echo "\t\t\t\t\t\t\t". '<input type="hidden" name="execute" value="save" />' ."\n";
-echo "\t\t\t\t\t\t\t". '<input type="submit" value="Apply" />' ."\n";
-echo "\t\t\t\t\t\t". '</div>' ."\n";
-echo "\t\t\t\t\t\t". '<div style="margin-left: 5px; float: left; width: 200px; font-weight: bold;">' ."\n";
-echo "\t\t\t\t\t\t\t". 'Enable NTP-Server: '. "\n";
-echo "\t\t\t\t\t\t". '</div>' ."\n";
-echo "\t\t\t\t\t\t". '<div><input type="checkbox" name="enabled" value="1" '. (get_ntpd_enabled() ? ' checked' : '') .'/></div>' ."\n";
-echo "\t\t\t\t\t". '</form>' ."\n";
-echo "\t\t\t\t\t". '<h2>'. $app_name .' State</h2>' ."\n";
-echo "\t\t\t\t\t". '<form class="confForm" name="ntpd_services" action="index.php" method="GET">' ."\n";
-echo "\t\t\t\t\t\t". '<div style="float: right;">' ."\n";
-echo "\t\t\t\t\t\t\t". '<input type="hidden" name="execute" value="services" />' ."\n";
-echo "\t\t\t\t\t\t\t". '<input type="submit" name="services" value="start" />' ."\n";
-echo "\t\t\t\t\t\t\t". '<input type="submit" name="services" value="stop" />' ."\n";
-echo "\t\t\t\t\t\t\t". '<input type="submit" name="services" value="restart" />' ."\n";
-echo "\t\t\t\t\t\t". '</div>' ."\n";
-echo "\t\t\t\t\t". '</form>' ."\n";
-echo "\t\t\t\t\t\t". '<div style="margin-left: 5px; font-weight: bold;">NTP-Server are currently ';
+
+echo '<br />'. "\n";
+
+echo '<h2>'. $app_name .' Settings</h2>' ."\n";
+echo '<form class="extensions_form" name="ntpd_settings" action="index.php" method="GET">' ."\n";
+echo "\t". '<div style="float: right; width: 125px;">' ."\n";
+echo "\t\t". '<input type="hidden" name="execute" value="save" />' ."\n";
+echo "\t\t". '<input type="submit" value="Apply" />' ."\n";
+echo "\t". '</div>' ."\n";
+echo "\t". '<div style="margin-left: 5px; float: left; width: 200px; font-weight: bold;">' ."\n";
+echo "\t\t". 'Enable NTP-Server: '. "\n";
+echo "\t". '</div>' ."\n";
+echo "\t". '<div><input type="checkbox" name="enabled" value="1" '. (get_ntpd_enabled() ? ' checked' : '') .'/></div>' ."\n";
+echo '</form>' ."\n";
+
+echo '<br />' ."\n";
+
+echo '<h2>'. $app_name .' State</h2>' ."\n";
+echo "\t". '<form class="extensions_form" name="ntpd_services" action="index.php" method="GET">' ."\n";
+echo "\t\t". '<div style="float: right; width: 290px;">' ."\n";
+echo "\t\t\t". '<input type="hidden" name="execute" value="services" />' ."\n";
+echo "\t\t\t". '<input type="submit" name="services" value="start" />' ."\n";
+echo "\t\t\t". '<input type="submit" name="services" value="stop" />' ."\n";
+echo "\t\t\t". '<input type="submit" name="services" value="restart" />' ."\n";
+echo "\t\t". '</div>' ."\n";
+echo "\t". '<div style="margin-left: 5px; font-weight: bold;">NTP-Server are currently ';
 if (get_ntpd_enabled() == true) {
 	if ($pid = exec('/bin/pidof -s ntpd')) {
 		echo '<span style="color:green">running</span>';
@@ -168,6 +197,15 @@ if (get_ntpd_enabled() == true) {
 	echo '<span style="color:red">disabled</span>';
 }
 echo '</div>' ."\n";
+echo '</form>' ."\n";
+
+echo '<br />' ."\n";
+echo '<br />' ."\n";
+
+echo '<div style="background-color: transparent; color: grey; float: right; width: 200px; text-align: right; font-size: 10px; margin-right: 40px;">' ."\n";
+echo "\t". 'Version '. get_ntpd_version() ."\n";
+echo '</div>' ."\n";
+
 echo gui_footer();
 
 ?>
